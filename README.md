@@ -1,2 +1,2 @@
 # mkconf
-my machinekit configurations
+my machinekit configuration for geeetech, a delta printer
