@@ -432,7 +432,7 @@ newsig check-xyz bit
 newsig check-xyz-optic bit
 newsig check-run bit
 newsig pause-xyz bit
-newsig check-xyzrun bit
+newsig check-xyz-optic-run bit
 
 
 net limit-z-max => not.1.in
@@ -459,14 +459,12 @@ net check-run <= halui.program.is-running
 net check-xyz-optic => and2.2.in0
 #net check-xyz => and2.2.in0
 net check-run => and2.2.in1
-net check-xyzrun <= and2.2.out
+net check-xyz-optic-run <= and2.2.out
 
-
-
-
-net check-xyzrun => not.0.in
+net check-xyz-optic-run => not.0.in
 net pause-xyz <= not.0.out
 
 net pause-xyz => halui.program.pause
+#net check-xyz-optic-run => halui.program.pause
 
 
