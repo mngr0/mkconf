@@ -6,6 +6,11 @@ rename 's/ /_/g' *
 for opt in `ls *.gcode`
 do
 
+if [ $opt -nt "/home/machinekit/Desktop/ngcfiles/`basename $opt .gcode`.ngc" ]; then
+	echo "new version of $opt found"
+	rm "/home/machinekit/Desktop/ngcfiles/`basename $opt .gcode`.ngc"
+fi
+
 if [ ! -f "/home/machinekit/Desktop/ngcfiles/`basename $opt .gcode`.ngc" ]; then
 
 echo "start with $opt"
