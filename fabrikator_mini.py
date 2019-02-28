@@ -54,14 +54,15 @@ base.setup_stepper_multiplexer(stepgenIndex=4, sections=multiplexSections,
                                selSignal='extruder-sel', thread='servo-thread')
 
 # Fans
-for i in range(0, numFans):
-    base.setup_fan('f%i' % i, thread='servo-thread')
+#for i in range(0, numFans):
+#    base.setup_fan('f%i' % i, thread='servo-thread')
 
 # Temperature Signals
 if hasHbp:
     base.create_temperature_control(name='hbp', section='HBP',
                                     hardwareOkSignal='temp-hw-ok',
                                     thread='servo-thread')
+
 for i in range(0, numExtruders):
     hardware.setup_exp('exp%i' % i)
     base.create_temperature_control(name='e%i' % i, section='EXTRUDER_%i' % i,

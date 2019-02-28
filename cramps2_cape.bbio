@@ -39,13 +39,13 @@ P9_21	low	# FET 4 : E1
 P9_22	low	# FET 6
 P9_23	low	# Machine Power
 P9_24	low	# E2 Step
-#P9_25	low	# LED
+P9_25	low	# LED
 P9_26	low	# E2 Dir
 P9_27	low	# FET 3 : E2
-#P9_28	low	# SPI CS0
-#P9_29	low	# SPI MISO
-#P9_30	low	# SPI MOSI
-#P9_31	low	# SPI SCLK
+P9_28	low	# SPI CS0
+P9_29	low	# SPI MISO
+P9_30	low	# SPI MOSI
+P9_31	low	# SPI SCLK
 
 P9_41	low	# FET 5
 P9_91	in	# Reserved, connected to P9.41
