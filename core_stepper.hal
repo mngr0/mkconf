@@ -6,7 +6,7 @@ loadrt lineardeltakins
 # motion controller, get name and thread periods from ini file
 # trajectory planner
 loadrt tp
-loadrt [EMCMOT]EMCMOT base_period_nsec=[EMCMOT]BASE_PERIOD servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[TRAJ]AXES tp=tp kins=trivkins
+loadrt motmod base_period_nsec=50000 servo_period_nsec=1000000 num_joints=[TRAJ]AXES tp=tp kins=lineardeltakins
 # stepper module, three step generators, all three using step/dir
 loadrt stepgen step_type=0,0,0
 
