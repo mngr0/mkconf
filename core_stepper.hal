@@ -2,7 +2,7 @@
 
 # first load the core RT modules that will be needed
 # kinematics
-loadrt trivkins
+loadrt lineardeltakins
 # motion controller, get name and thread periods from ini file
 # trajectory planner
 loadrt tp
@@ -52,4 +52,3 @@ setp stepgen.2.position-scale [AXIS_2]SCALE
 setp stepgen.0.maxaccel [AXIS_0]STEPGEN_MAXACCEL
 setp stepgen.1.maxaccel [AXIS_1]STEPGEN_MAXACCEL
 setp stepgen.2.maxaccel [AXIS_2]STEPGEN_MAXACCEL
-
