@@ -1,8 +1,7 @@
 loadusr hal_tclab
-
-loadusr therm_unify count=2 #load two, one for bed, one for e0
-
-
+loadusr therm_unify therm_unify.0
+loadusr therm_unify therm_unify.1 
+#load two, one for bed, one for e0
 
 #loading therm signals, for Mcommands and gui
 newsig bed.temp float
@@ -16,15 +15,15 @@ newsig e0.setpointM float
 newsig e0.setpointGUI float
 
 
-net bed.setpoint => hal_tclab.setpoint-1
-net bed.setpoint <= therm_unify.0.output
-net bed.setpointM => therm_unify.0.in.0
-net bed.setpointGUI => therm_unify.0.in.1
+#net bed.setpoint => hal_tclab.setpoint-0
+#net bed.setpoint <= therm_unify.0.out
+#net bed.setpointM => therm_unify.0.in.0
+#net bed.setpointGUI => therm_unify.0.in.1
 
-net e0.setpoint => hal_tclab.setpoint-1
-net e0.setpoint <= therm_unify.0.output
-net e0.setpointM => therm_unify.0.in.0
-net e0.setpointGUI => therm_unify.0.in.1
+#net e0.setpoint => hal_tclab.setpoint-1
+#net e0.setpoint <= therm_unify.1.out
+#net e0.setpointM => therm_unify.1.in.0
+#net e0.setpointGUI => therm_unify.1.in.1
  
 
 
