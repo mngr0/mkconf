@@ -1,23 +1,27 @@
 import hal
-import hal_tclab
-import therm_unify
+#import hal_tclab
+#import therm_unify
 
 
 
 
 #loadusr hal_tclab
 #loadusr therm_unify therm_unify.0
-unify_bed= create_
+#unify_bed= create_
+
+#hal.loadusr('hal_tclab')
+
+#hal.Pin('').link
 
 #loadusr therm_unify therm_unify.1 
 #load two, one for bed, one for e0
 
 #loading therm signals, for Mcommands and gui
 
-bedTemp = hal.newsig("bed.temp", hal.HAL_FLOAT)
-bedsetPoint = hal.newsig("bed.setpoint", hal.HAL_FLOAT)
-bedsetPointM = hal.newsig("bed.setpointM", hal.HAL_FLOAT)
-bedsetPointGUI = hal.newsig("bed.setpointGUI", hal.HAL_FLOAT)
+#bedTemp = hal.newsig("bed.temp", hal.HAL_FLOAT)
+#bedsetPoint = hal.newsig("bed.setpoint", hal.HAL_FLOAT)
+#bedsetPointM = hal.newsig("bed.setpointM", hal.HAL_FLOAT)
+#bedsetPointGUI = hal.newsig("bed.setpointGUI", hal.HAL_FLOAT)
 #newsig bed.temp float
 #newsig bed.setpoint float
 #newsig bed.setpointM float
