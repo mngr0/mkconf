@@ -15,12 +15,12 @@ newsig e0.setpointM float
 newsig e0.setpointGUI float
 
 
-#net bed.setpoint => hal_tclab.setpoint-0
+#net bed.setpoint => hal_tclab.setpoint-1
 #net bed.setpoint <= therm_unify.0.out
 #net bed.setpointM => therm_unify.0.in.0
 #net bed.setpointGUI => therm_unify.0.in.1
 
-#net e0.setpoint => hal_tclab.setpoint-1
+#net e0.setpoint => hal_tclab.setpoint-0
 #net e0.setpoint <= therm_unify.1.out
 #net e0.setpointM => therm_unify.1.in.0
 #net e0.setpointGUI => therm_unify.1.in.1
