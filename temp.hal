@@ -1,6 +1,8 @@
 loadusr hal_tclab
 loadusr therm_unify therm_unify.0
 loadusr therm_unify therm_unify.1 
+loadusr therm_vcp therm_vcp.e0
+loadusr therm_vcp therm_vcp.bed
 #load two, one for bed, one for e0
 
 #loading therm signals, for Mcommands and gui

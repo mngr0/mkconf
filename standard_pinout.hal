@@ -1,7 +1,9 @@
 loadrt hal_parport cfg="0x0378"
+newinst andn switches-check pincount=4
+
 addf parport.0.read base-thread 1
 addf parport.0.write base-thread -1
-
+addf switches-check.funct servo-thread -1
 
 net Xstep => parport.0.pin-03-out
 net Xdir  => parport.0.pin-02-out
@@ -16,6 +18,7 @@ net Adir => parport.0.pin-08-out
 newsig Xhome-debounced bit
 newsig Yhome-debounced bit
 newsig Zhome-debounced bit
+newsig FILOend-debounced bit
 
 
 net Xhome => parport.0.pin-10-in-not
@@ -32,7 +35,10 @@ net Zhome-debounced => debounce.0.2.out
 
 
 
-net FILOend => parport.0.pin-13-in
+net FILOend => parport.0.pin-13-in-not
+net FILOend => debounce.0.3.in
+net FILOend-debounced => debounce.0.3.out
+
 net ALLenable => parport.0.pin-01-out
 
 #setp parport.0.pin-12-in-invert 1
@@ -47,18 +53,14 @@ net ALLenable => motion.motion-enabled
 
 net estop-loop iocontrol.0.user-enable-out iocontrol.0.emc-enable-in
 
-# create signals for tool loading loopback
-#net tool-prep-loop iocontrol.0.tool-prepare iocontrol.0.tool-prepared
-#net tool-change-loop iocontrol.0.tool-change iocontrol.0.tool-changed
-
 
 setp lineardeltakins.R 297
 setp lineardeltakins.L 654
 
-setp lineardeltakins.A1off 0.000010
-setp lineardeltakins.A2off 0.000010
-setp lineardeltakins.J0off 0.000010
-setp lineardeltakins.J1off 0.000010
-setp lineardeltakins.J2off 0.000010
-setp lineardeltakins.R1off 0.000010
-setp lineardeltakins.R2off 0.000010
+net FILOend-debounced => switches-check.in0
+net Xhome-debounced => switches-check.in1
+net Yhome-debounced => switches-check.in2
+net Zhome-debounced => switches-check.in3
+
+newsig check-pause bit
+net check-pause => switches-check.out

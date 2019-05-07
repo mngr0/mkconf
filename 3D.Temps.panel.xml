@@ -4,11 +4,20 @@
   <label>
     <text>"Extruder Temp:"</text>
   </label>
-
   <number>
     <halpin>"E0.Temp.set"</halpin>
     <format>"3.1f"</format>
   </number>
+  <button>
+    <halpin>"E0.Temp.decrease"</halpin>
+    <text>"-"</text>
+  </button>
+  <button>
+    <halpin>"E0.Temp.increase"</halpin>
+    <text>"+"</text>
+  </button>
+
+
 </hbox>
   <bar>
     <halpin>"E0.Temp"</halpin>
@@ -23,6 +32,15 @@
     <halpin>"Bed.Temp.set"</halpin>
     <format>"3.1f"</format>
   </number>
+  <button>
+    <halpin>"Bed.Temp.decrease"</halpin>
+    <text>"-"</text>
+  </button>
+  <button>
+    <halpin>"Bed.Temp.increase"</halpin>
+    <text>"+"</text>
+  </button>
+
 </hbox>
   <bar>
     <halpin>"Bed.Temp"</halpin>
