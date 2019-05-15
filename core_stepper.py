@@ -6,33 +6,37 @@ from machinekit import config as c
 
 from fdm.config import motion
 
+import time
 
 rt.init_RTAPI()
 c.load_ini(os.environ['INI_FILE_NAME'])
 motion.setup_motion(kinematics="lineardeltakins")
 rt.loadrt("stepgen",step_type="0,0,0,0")
 rt.loadrt("debounce")
-#rt.newthread(name="base-thread", period=10000,instance=1)
+time.sleep(5)
+hal.addf("stepgen.make-pulses","base-thread")
+
+hal.addf("stepgen.capture-position","servo-thread")
+hal.addf("motion-command-handler","servo-thread")
+hal.addf("motion-controller","servo-thread")
+hal.addf("stepgen.update-freq","servo-thread")
+#hal.addf("debounce.0.funct","servo-thread")
 """
-loadrt motmod base_period_nsec=50000 servo_period_nsec=1000000 num_joints=[TRAJ]AXES tp=tp kins=lineardeltakins
-# hook functions to base thread (high speed thread for step generation)
-addf stepgen.make-pulses base-thread
-
-# hook functions to servo thread
-addf stepgen.capture-position servo-thread
-addf motion-command-handler servo-thread
-addf motion-controller servo-thread
-addf stepgen.update-freq servo-thread
-addf debounce.0.funct servo-thread
-
 # connect position commands from motion module to step generator
-net Xpos-cmd axis.0.motor-pos-cmd => stepgen.0.position-cmd
-net Ypos-cmd axis.1.motor-pos-cmd => stepgen.1.position-cmd
-net Zpos-cmd axis.2.motor-pos-cmd => stepgen.2.position-cmd
-net Apos-cmd axis.3.motor-pos-cmd => stepgen.3.position-cmd
+hal.net("Xpos-cmd", "stepgen.0.position-cmd")
+hal.net("axis.0.motor-pos-cmd", "stepgen.0.position-cmd")
+hal.net("Ypos-cmd", "stepgen.1.position-cmd")
+hal.net("axis.1.motor-pos-cmd", "stepgen.1.position-cmd")
+hal.net("Zpos-cmd", "stepgen.2.position-cmd")
+hal.net("axis.2.motor-pos-cmd", "stepgen.2.position-cmd")
+hal.net("Apos-cmd", "stepgen.3.position-cmd")
+hal.net("axis.3.motor-pos-cmd", "stepgen.3.position-cmd")
+
+
 
 # connect position feedback from step generators
 # to motion module
+hal.net("Xpos-fb")
 net Xpos-fb stepgen.0.position-fb => axis.0.motor-pos-fb
 net Ypos-fb stepgen.1.position-fb => axis.1.motor-pos-fb
 net Zpos-fb stepgen.2.position-fb => axis.2.motor-pos-fb

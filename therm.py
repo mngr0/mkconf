@@ -1,7 +1,24 @@
-import hal
-#import hal_tclab
-#import therm_unify
+from machinekit import hal
+from machinekit import rtapi as rt
 
+#from hal_tclab import hal_tclab
+#from therm_unify import therm_unify
+#from therm_vcp import therm_vcp
+
+#rt.init_RTAPI()
+#lab = rt.newinst("hal_tclab", "llllab")
+hal.addf("newinst","servo-thread")
+#tclab= hal_tclab("hal_clab")
+hal.loadusr("hal_tclab")
+#hal.addf(lab.name,"servo-thread")
+
+
+
+#unify_bed= therm_unify("unify_bed")
+#unify_e0= therm_unify("unify_e0")
+
+#vcp_bed= therm_vcp("vcp_bed")
+#vcp_e0= therm_vcp("vcp_e0")
 
 
 

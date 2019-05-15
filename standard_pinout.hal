@@ -5,6 +5,8 @@ addf parport.0.read base-thread 1
 addf parport.0.write base-thread -1
 addf switches-check.funct servo-thread -1
 
+setp parport.0.pin-08-out-invert TRUE
+
 net Xstep => parport.0.pin-03-out
 net Xdir  => parport.0.pin-02-out
 net Ystep => parport.0.pin-05-out
