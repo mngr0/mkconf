@@ -1,0 +1,45 @@
+Hi,
+
+I am trying to build userspace hal components, and I am trying to build them with python.
+
+I can find a lot of examples in the repository calling machinekit.rtapi.loadrt, but I have the vague idea of using machinekit.hal.loadusr
+
+Until now the only solution i have found is something structured like this
+#comp file
+from machinekit import hal
+
+comp=hal.component("name")
+#comp.newpin...
+
+while 1:
+  comp["a"]=comp["b"]
+  time.sleep(1)
+
+and loading
+
+hal.loadusr("comp")
+
+Is this the way it should be used?
+
+I know the hal.addf function, I would like to use it to load function on threads. Is it possible to export function from userspace components? I haven't found any way of exporting functions from python 
+
+I would like to write something like that
+
+#comp file
+from machinekit import hal
+
+comp=hal.component("name")
+#comp.newpin...
+
+def foo():
+  comp["a"]=comp["b"]
+
+hal.export(foo)
+
+
+hal.loadusr("comp")
+hal.addf("foo","servo-thread")
+
+Can you please give me some advice?
+
+mngr

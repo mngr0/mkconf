@@ -7,9 +7,10 @@ from machinekit import rtapi as rt
 
 #rt.init_RTAPI()
 #lab = rt.newinst("hal_tclab", "llllab")
-hal.addf("newinst","servo-thread")
+#hal.addf("newinst","servo-thread")
 #tclab= hal_tclab("hal_clab")
 hal.loadusr("hal_tclab")
+hal.loadusr("therm_unify")
 #hal.addf(lab.name,"servo-thread")
 
 
