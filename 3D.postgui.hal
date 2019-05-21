@@ -1,21 +1,11 @@
-#newsig bed.temp float
-#newsig bed.setpoint float
-#newsig e0.temp float
-#newsig e0.setpoint float
+net ALLenable => hal_tclab.enable
 
-net e0.temp <= hal_tclab.temperature-0
+
 net e0.temp => pyvcp.E0.Temp
+net e0.temp <= hal_tclab.temperature-0
  
-#net e0.setpoint <= hal_tclab.setpoint-0
-
-#net e0.setpoint => pyvcp.E0.Temp.set 
-
-
 net bed.temp <= hal_tclab.temperature-1
 net bed.temp => pyvcp.Bed.Temp 
-#net bed.setpoint => hal_tclab.setpoint-1
-#net bed.setpoint => pyvcp.Bed.Temp.set 
-
 
 
 net bed.setpoint => hal_tclab.setpoint-1
