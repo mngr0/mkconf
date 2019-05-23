@@ -22,11 +22,9 @@ newsig Yhome-debounced bit
 newsig Zhome-debounced bit
 newsig FILOend-debounced bit
 
-
 net Xhome => parport.0.pin-10-in-not
 net Yhome => parport.0.pin-11-in-not
 net Zhome => parport.0.pin-12-in-not
-
 
 net Xhome => debounce.0.0.in
 net Xhome-debounced => debounce.0.0.out
@@ -34,8 +32,6 @@ net Yhome => debounce.0.1.in
 net Yhome-debounced => debounce.0.1.out
 net Zhome => debounce.0.2.in
 net Zhome-debounced => debounce.0.2.out
-
-
 
 net FILOend => parport.0.pin-13-in-not
 net FILOend => debounce.0.3.in
@@ -55,7 +51,6 @@ net ALLenable => motion.motion-enabled
 
 net estop-loop iocontrol.0.user-enable-out iocontrol.0.emc-enable-in
 
-
 setp lineardeltakins.R 297
 setp lineardeltakins.L 654
 
@@ -66,3 +61,4 @@ net Zhome-debounced => switches-check.in3
 
 newsig check-pause bit
 net check-pause => switches-check.out
+net check-pause => halui.program.pause

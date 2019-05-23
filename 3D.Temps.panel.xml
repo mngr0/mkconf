@@ -48,7 +48,7 @@
   </bar>
 
   <button>
-    <halpin>"HomeAll"</halpin>
+    <halpin>"home-all"</halpin>
     <text>"HOME ALL"</text>
   </button>
   <button>

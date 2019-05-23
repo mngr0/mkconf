@@ -42,3 +42,12 @@ net bed.decrease => therm_vcp.bed.decrease
 net bed.increase => pyvcp.Bed.Temp.increase
 net bed.increase => therm_vcp.bed.increase
 net bed.setpointGUI => therm_vcp.bed.setpoint-out 
+
+
+newsig home-all bit
+
+net home-all <= pyvcp.home-all 
+net home-all => halui.joint.0.home
+net home-all => halui.joint.1.home
+net home-all => halui.joint.2.home
+net home-all => halui.joint.3.home
