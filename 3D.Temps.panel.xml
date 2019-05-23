@@ -16,6 +16,10 @@
     <halpin>"E0.Temp.increase"</halpin>
     <text>"+"</text>
   </button>
+  <checkbutton>
+    <halpin>"E0.enable"</halpin>
+    <text>"enable"</text>
+  </checkbutton>
 
 
 </hbox>
@@ -23,6 +27,7 @@
     <halpin>"E0.Temp"</halpin>
     <max_>300</max_>
   </bar>
+
 <hbox>
   <label>
     <text>"Bed Temp:"</text>
@@ -40,7 +45,10 @@
     <halpin>"Bed.Temp.increase"</halpin>
     <text>"+"</text>
   </button>
-
+  <checkbutton>
+    <halpin>"bed.enable"</halpin>
+    <text>"enable"</text>
+  </checkbutton>
 </hbox>
   <bar>
     <halpin>"Bed.Temp"</halpin>
