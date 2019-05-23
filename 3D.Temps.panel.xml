@@ -46,4 +46,15 @@
     <halpin>"Bed.Temp"</halpin>
     <max_>300</max_>
   </bar>
+
+  <button>
+    <halpin>"HomeAll"</halpin>
+    <text>"HOME ALL"</text>
+  </button>
+  <button>
+    <halpin>"gcode2ngc"</halpin>
+    <text>"convert GCODE to NGC"</text>
+  </button>
+
+
 </pyvcp>
