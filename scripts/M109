@@ -2,7 +2,6 @@
 import subprocess
 import sys
 import time
-print("CI SONO!!!")
 set=float(str(sys.argv[1]).rstrip())
 subprocess.check_output(["halcmd sets e0.setpointM %s" %set], shell=True).rstrip()
 time.sleep(3)
