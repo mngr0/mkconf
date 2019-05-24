@@ -19,6 +19,7 @@
   <checkbutton>
     <halpin>"E0.enable"</halpin>
     <text>"enable"</text>
+    <initval>1</initval>
   </checkbutton>
 
 
@@ -48,6 +49,7 @@
   <checkbutton>
     <halpin>"bed.enable"</halpin>
     <text>"enable"</text>
+    <initval>1</initval>
   </checkbutton>
 </hbox>
   <bar>

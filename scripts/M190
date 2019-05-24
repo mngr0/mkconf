@@ -2,12 +2,14 @@
 import subprocess
 import sys
 import time
+from machinekit import hal
+en=hal.Pin("hal_tclab.enable-1")
 set=float(str(sys.argv[1]).rstrip())
 subprocess.check_output(["halcmd sets bed.setpointM %s" %set], shell=True).rstrip()
 time.sleep(3)
 act = float(subprocess.check_output("halcmd gets bed.temp", shell=True).rstrip())
 print ("bl act=%s   set= %s"%(act,set))
-while(act<(set*0.9)):
+while(act<(set*0.9))and en.get():
 	set=float(subprocess.check_output("halcmd gets bed.setpoint", shell=True).rstrip())
 	act=float(subprocess.check_output("halcmd gets bed.temp", shell=True).rstrip())
 	print ("il act=%s   set= %s"%(act,set))
