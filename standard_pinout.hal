@@ -66,7 +66,6 @@ net ALLenable => parport.0.pin-01-out
 #setp parport.0.pin-11-in-invert 1
 #setp parport.0.pin-10-in-invert 1
 
-
 net Xhome-debounced => axis.0.home-sw-in
 net Yhome-debounced => axis.1.home-sw-in
 net Zhome-debounced => axis.2.home-sw-in
@@ -85,25 +84,13 @@ net Zhome-not-debounced => switches-check.in3
 newsig check-pause bit
 net check-pause => switches-check.out
 
-#newsig homing0 bit
-#newsig homing1 bit
-#newsig homing2 bit
-#newsig homing3 bit
-
 newsig check-is-running bit
 net check-is-running halui.program.is-running
 
 #net homing0 => axis.0.homing
-#net homing1 => axis.1.homing
-#net homing2 => axis.2.homing
-#net homing3 => axis.3.homing
 
 net check-pause => and-pause-home.in0
 net check-is-running and-pause-home.in1
-#net homing0 => and-pause-home.in1
-#net homing1 => and-pause-home.in2
-#net homing2 => and-pause-home.in3
-#net homing3 => and-pause-home.in4
 
 newsig check-pause-home bit
 

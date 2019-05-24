@@ -1,0 +1,5 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=changeH
+Exec=xterm /home/machinekit/Documents/gh/mkconf/scripts/launch-change.sh
