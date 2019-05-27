@@ -73,7 +73,7 @@ net ALLenable => motion.motion-enabled
 
 net estop-loop iocontrol.0.user-enable-out iocontrol.0.emc-enable-in
 
-setp lineardeltakins.R 297
+setp lineardeltakins.R 295.4
 setp lineardeltakins.L 654
 
 net FILOend-debounced => switches-check.in0
