@@ -1,8 +1,14 @@
 #!/usr/bin/python
 
 from machinekit import hal
-
+import linuxcnc
 import sys
+
+cmd=linuxcnc.command()
+stat=linuxcnc.stat()
+
+stat.poll()
+H=stat.actual_position[2]
 
 def output_ini(path,home,offset):
   #path="test" #read from machinekit.ini
@@ -116,38 +122,51 @@ for i in range(3):
   home[i]= hal.Pin("axis.%s.home" %str(i))
   homeoffset[i]= hal.Pin("axis.%s.home-offset" %str(i))
 
-for i in range(3):
-  print("axis"+str(i))
-  print(home[i].get())
-  print(homeoffset[i].get())
 
-change=3
-while 1:
-  print("menu:\n\t1)sali\n\t2)scendi\n\t3)salva\n")
-  opt=raw_input()
-  try:
-    opt=int(opt)
-  except:
-    print("comando non valido")
-    sys.exit(0)
-  if opt==1 or opt==2:
-    print("quanto:")
-    change=raw_input() #rimpiazzare , con .
-    try:
-      change=float(change)
-      if opt == 2:
-        change=-change
-    except:
-      print("valore non riconosciuto")
-      exit(0)
-    for i in range(3):
-      home[i].set(home[i].get()-change)
-      homeoffset[i].set(homeoffset[i].get()-change)
-  if opt==3:
-    if len(sys.argv) != 2:
-      print ("to save, you must give an argument")
-    if (not str(sys.argv[1]).endswith(".ini") ):
-      print ("invalid file, it must ends with .ini")
-    output_ini(str(sys.argv[1]),home[0].get(),homeoffset[0].get())
 
-#salvare
+
+def create_fun(type,value,Hlabel):
+  if(type=="+"):
+    def fun():
+#      for i in range(3):
+#        home[i].set(home[i].get()-value)
+#        homeoffset[i].set(homeoffset[i].get()-value)
+      cmd.mdi("G0 Z"+str(float(H)+value ))
+      Hlabel.set(home[0].get())
+  else:
+    def fun():
+#      for i in range(3):
+#        home[i].set(home[i].get()+value)
+#        homeoffset[i].set(homeoffset[i].get()+value)
+      cmd.mdi("G0 Z"+str(float(H)+value ))
+      Hlabel.set(home[0].get())
+  return fun
+
+from Tkinter import *
+window = Tk()
+window.title("cambiare altezza")
+window.geometry("400x400")
+
+lbl= Label(window, text="altezza attuale=")
+lbl.grid(column=0, row=0)
+
+Htext=StringVar(value=H)
+#home[0].get()
+altezza=Label(window, textvariable=Htext)
+altezza.grid(column=1,row=0)
+type=["+","-"]
+amount=[.1,1,10]
+
+for i,t in enumerate(type):
+  for j,a in enumerate(amount):
+    f=create_fun(str(t),a,Htext)
+    b= Button(window,text=t+str(a),command=f)
+    b.grid(column=2+j,row=i)
+#btn conferma, sali 1,10,100
+
+sethome=Button(window,text="imposta come 0")
+sethome.grid(column=0,row=4)
+
+s= Button(window,text="salva",command=output_ini(str(sys.argv[1]),home[0].get(),homeoffset[0].get() ) )
+s.grid(column=1,row=4)
+window.mainloop()
