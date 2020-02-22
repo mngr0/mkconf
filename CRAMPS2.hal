@@ -435,7 +435,7 @@ newsig pause-xyz bit
 newsig check-xyz-optic-run bit
 
 
-net limit-z-max => not.1.in
+net limit-y-max => not.1.in
 net optical-sensor <= not.1.out
 
 
